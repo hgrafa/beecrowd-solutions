@@ -1,27 +1,36 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 int main( void ){
-  int a, b, count=0;
 
-  scanf("%d %d", &a, &b);
+  double a, b, c;
 
-  int L = true;
-  for(int i=1; i <= b; i++){
-    if(L == true){
-      printf("%d", i);
-      L = false;
-    }else{
-      printf(" %d", i);
-    }
+  cin >> a >> b >> c;
 
-    count++;
+  if(b > a && b > c) swap(a, b);
+  else if ( c > a && c > b ) swap(a, c);
 
-    if( count == a){
-      printf("\n");
-      L=true;
-      count = 0;
-    }
+  if(c > b) swap(b, c);
+
+  if(a >= b + c) {
+    cout << "NAO FORMA TRIANGULO" << endl;
+    return 0;
+  }
+
+  if(a*a == b*b + c*c) {
+    cout << "TRIANGULO RETANGULO" << endl;
+  } else if (a*a > b*b + c*c) {
+    cout << "TRIANGULO OBTUSANGULO" << endl;
+  } else {
+    cout << "TRIANGULO ACUTANGULO" << endl;
+  }
+
+  if(a == b && b == c) {
+    cout << "TRIANGULO EQUILATERO" << endl;
+  } else if (a == b || b == c || a == c){
+    cout << "TRIANGULO ISOSCELES" << endl;
   }
 
   return 0;
